@@ -12,22 +12,29 @@
 </template>
 
 <script>
+    import {mapActions, mapGetters} from 'vuex';
     export default {
         computed: {
             products() {
                 return this.$store.state.products;
             },
-            saleProducts() {
-                return this.$store.getters.saleProducts;
-            }
+            // saleProducts() {
+            //     return this.$store.getters.saleProducts;
+            // }
+            ...mapGetters([
+                'saleProducts'
+            ])
         },
         methods: {
-            reducePrice: function(amount) {
+            /*reducePrice: function(amount) {
                 // this.$store.state.products.forEach(product => {
                 //     product.price -=1;
                 // }); this one is difficult to track from the vue devtools extension
                 this.$store.dispatch('reducePrice', amount); //'reducePrice refers to the mutation name, not the method name
-            }
+            }*/
+            ...mapActions([
+                'reducePrice'
+            ])
         }    
     }
 </script>
