@@ -7,7 +7,7 @@
                 <span class="price">${{ product.price }} </span>
             </li>
         </ul>
-        <button v-on:click="reducePrice">Reduce Price </button>
+        <button v-on:click="reducePrice(4)">Reduce Price </button>
     </div>
 </template>
 
@@ -22,11 +22,11 @@
             }
         },
         methods: {
-            reducePrice: function() {
+            reducePrice: function(amount) {
                 // this.$store.state.products.forEach(product => {
                 //     product.price -=1;
                 // }); this one is difficult to track from the vue devtools extension
-                this.$store.commit('reducePrice'); //'reducePrice refers to the mutation name, not the method name
+                this.$store.dispatch('reducePrice', amount); //'reducePrice refers to the mutation name, not the method name
             }
         }    
     }
